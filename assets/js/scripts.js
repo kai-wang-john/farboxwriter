@@ -89,7 +89,8 @@ jQuery(function($) {
 
             // If the requested url is not the current states url push
             // the new state and make the ajax call.
-            if (url !== currentState.url.replace(/\/$/, "")) {
+            // currentState.url.replace(/\/$/, ""), use relative path instead, sometimes, both http & https work together.
+            if (url !== currentState.url.replace(/https?:\/\/.*?\//, "/")) {
                 loading = true;
 
                 // Check if we need to show the post index after we've
