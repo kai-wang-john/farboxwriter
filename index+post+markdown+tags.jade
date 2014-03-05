@@ -17,12 +17,16 @@ html
 		title= site.title or post.title
 		meta(name="description", content=site.raw_content.escaped)
 		meta(name="HandheldFriendly", content="True")
-    	meta(name="MobileOptimized", content="320")
-    	meta(name="viewport", content="width=device-width, initial-scale=1.0")
+		meta(name="MobileOptimized", content="320")
+		meta(name="viewport", content="width=device-width, initial-scale=1.0")
 		+load("/template/assets/css", ('normalize.css', 'nprogress.css', 'style.scss'))
 		+load("//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300&subset=latin,cyrillic-ext,latin-ext,cyrillic")
 		+load("fonts")
+		
+		+load("http://big-thing.qiniudn.com/favicon.png")
+		<link href="http://big-thing.qiniudn.com/favicon.png" rel="shortcut icon" />
 	body
+	testaaa
 		#wrapper
 			header.site-header
 				.container
@@ -39,6 +43,9 @@ html
 						if has("about.md")
 							li.site-nav-item
 								a.js-ajax-link(href="/about.md") About
+						if has("links.md")
+							li.site-nav-item
+								a.js-ajax-link(href="/links.md") Links
 			#ajax-container
 				if request.path == '/' or request.path.startswith('/page/') or request.path.startswith('/tags/')
 					if posts
@@ -62,6 +69,7 @@ html
 				else
 					.container
 						+detail_article(post)
+					
 		footer.footer
 			.container
 				.site-title-wrapper
